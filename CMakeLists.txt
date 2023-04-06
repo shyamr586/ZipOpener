@@ -10,6 +10,17 @@ qt_standard_project_setup()
 
 qt_add_executable(appZipFileOpener
     main.cpp
+    filepicker.h
+    filepicker.cpp
+)
+
+qt_add_resources(appZipFileOpener "android"
+    PREFIX /
+    FILES
+        android/src/com/example/zipopener/MainActivity.java
+        android/AndroidManifest.xml
+        android/build.gradle
+        android/res/values/libs.xml
 )
 
 qt_add_qml_module(appZipFileOpener
