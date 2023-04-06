@@ -1,0 +1,9 @@
+org.qtproject.example.appZipFileOpener-java-0 /Users/fyi/Qt/6.4.3/android_arm64_v8a/src/android/java/res
+org.qtproject.example.appZipFileOpener-pngs-1 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/build/generated/res/pngs/debug
+org.qtproject.example.appZipFileOpener-resValues-2 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/build/generated/res/resValues/debug
+org.qtproject.example.appZipFileOpener-rs-3 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/build/generated/res/rs/debug
+org.qtproject.example.appZipFileOpener-mergeDebugResources-4 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
+org.qtproject.example.appZipFileOpener-mergeDebugResources-5 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+org.qtproject.example.appZipFileOpener-merged_res-6 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/build/intermediates/merged_res/debug
+org.qtproject.example.appZipFileOpener-android-build-7 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/res
+org.qtproject.example.appZipFileOpener-debug-8 /Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/src/debug/res

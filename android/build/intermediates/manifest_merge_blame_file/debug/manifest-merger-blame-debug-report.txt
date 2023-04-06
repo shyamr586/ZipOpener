@@ -1,0 +1,98 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.qtproject.example.appZipFileOpener"
+4    android:installLocation="auto"
+5    android:versionCode="1"
+6    android:versionName="1.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="23"
+9-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml
+10        android:targetSdkVersion="30" />
+10-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml
+11
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:7:5-67
+12-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:7:22-64
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:8:5-81
+13-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:8:22-78
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:9:5-79
+14-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:9:22-76
+15
+16    <supports-screens
+16-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:11:5-15:39
+17        android:anyDensity="true"
+17-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:12:9-34
+18        android:largeScreens="true"
+18-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:13:9-36
+19        android:normalScreens="true"
+19-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:14:9-37
+20        android:smallScreens="true" />
+20-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:15:9-36
+21
+22    <application
+22-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:16:5-48:19
+23        android:name="org.qtproject.qt.android.bindings.QtApplication"
+23-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:17:9-71
+24        android:allowBackup="true"
+24-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:22:9-35
+25        android:allowNativeHeapPointerTagging="false"
+25-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:21:9-54
+26        android:debuggable="true"
+27        android:fullBackupOnly="false"
+27-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:23:9-39
+28        android:hardwareAccelerated="true"
+28-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:18:9-43
+29        android:label="appZipFileOpener"
+29-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:19:9-41
+30        android:requestLegacyExternalStorage="true" >
+30-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:20:9-52
+31        <activity
+31-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:24:9-47:20
+32            android:name="org.qtproject.qt.android.bindings.QtActivity"
+32-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:25:13-72
+33            android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
+33-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:26:13-182
+34            android:exported="true"
+34-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:30:13-36
+35            android:label="appZipFileOpener"
+35-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:27:13-45
+36            android:launchMode="singleTop"
+36-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:28:13-43
+37            android:screenOrientation="unspecified" >
+37-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:29:13-52
+38            <intent-filter>
+38-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:31:13-34:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:32:17-69
+39-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:32:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:33:17-77
+41-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:33:27-74
+42            </intent-filter>
+43
+44            <meta-data
+44-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:36:11-38:52
+45                android:name="android.app.lib_name"
+45-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:37:17-52
+46                android:value="appZipFileOpener" />
+46-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:38:17-49
+47            <meta-data
+47-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:40:11-42:36
+48                android:name="android.app.arguments"
+48-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:41:17-53
+49                android:value="" />
+49-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:42:17-33
+50            <meta-data
+50-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:44:13-46:43
+51                android:name="android.app.extract_android_style"
+51-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:45:17-65
+52                android:value="minimal" />
+52-->/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/AndroidManifest.xml:46:17-40
+53        </activity>
+54    </application>
+55
+56</manifest>

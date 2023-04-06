@@ -1,0 +1,45 @@
+{
+    "logs": [
+        {
+            "outputFile": "org.qtproject.example.appZipFileOpener-mergeDebugResources-4:/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/fyi/build-ZipFileOpener-Android_Qt_6_4_3_Clang_arm64_v8a-Debug/android-build/res/values/libs.xml",
+                    "from": {
+                        "startLines": "4,20,8,26,24,27,25",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "148,698,203,922,825,973,874",
+                        "endLines": "6,22,18,26,24,27,25",
+                        "endColumns": "12,12,12,50,48,47,47",
+                        "endOffsets": "197,819,692,968,869,1016,917"
+                    },
+                    "to": {
+                        "startLines": "2,5,8,19,21,22,24",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,109,235,729,888,929,1067",
+                        "endLines": "4,7,18,19,21,22,24",
+                        "endColumns": "12,12,12,50,40,39,47",
+                        "endOffsets": "104,230,724,775,924,964,1110"
+                    }
+                },
+                {
+                    "source": "/Users/fyi/Qt/6.4.3/android_arm64_v8a/src/android/java/res/values/strings.xml",
+                    "from": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "85,193",
+                        "endColumns": "107,97",
+                        "endOffsets": "188,286"
+                    },
+                    "to": {
+                        "startLines": "20,23",
+                        "startColumns": "4,4",
+                        "startOffsets": "780,969",
+                        "endColumns": "107,97",
+                        "endOffsets": "883,1062"
+                    }
+                }
+            ]
+        }
+    ]
+}
