@@ -24,47 +24,25 @@ import java.util.zip.ZipInputStream;
 public class MainActivity extends QtActivity {
 
     public final int REQUEST_CODE = 1;
-
+    public long pointer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("On create is running? ", "yes");
     }
 
-    public void openFileDialog() {
+    public native void fileListReceived(ArrayList<String> files, long pointer);
 
-        //filePickPointer = filePicker;
-        //Log.d(tag, filePicker+"");
+    public void openFileDialog(long FilePickerPointer) {
+        pointer = FilePickerPointer;
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
-        //intent.putExtra("pointer", filePicker);
+        intent.setType("application/zip");
         startActivityForResult(intent, REQUEST_CODE);
-
     }
 
+    //https://stackoverflow.com/questions/40050270/java-unzip-and-progress-bar
+    //check this ^ to get an idea.
 
-//            try {
-//        File cacheDir = getCacheDir();
-//        ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(zipFilePath));
-//        ZipEntry zipEntry;
-//        while ((zipEntry = zipInputStream.getNextEntry()) != null) {
-//            File file = new File(cacheDir, zipEntry.getName());
-//            if (zipEntry.isDirectory()) {
-//                file.mkdirs();
-//            } else {
-//                FileOutputStream fileOutputStream = new FileOutputStream(file);
-//                byte[] buffer = new byte[1024];
-//                int length;
-//                while ((length = zipInputStream.read(buffer)) > 0) {
-//                    fileOutputStream.write(buffer, 0, length);
-//                }
-//                fileOutputStream.close();
-//            }
-//        }
-//        zipInputStream.close();
-//    } catch (IOException e) {
-//        e.printStackTrace();
-//    }
     @Override
     public void onActivityResult(int requestcode, int resultcode, Intent data) {
 
@@ -75,12 +53,11 @@ public class MainActivity extends QtActivity {
                 Log.d("The uri from java is", uri.getPath());
 
                 InputStream input = null;
-
                 try {
                     input = getContentResolver().openInputStream(uri);
                     ZipInputStream zippedInputStream = new ZipInputStream(input);
                     ZipEntry zipEntry;
-                    //List<String> fileList = new ArrayList<>();
+                    ArrayList<String> fileList = new ArrayList<>();
                     while ((zipEntry = zippedInputStream.getNextEntry()) != null) {
                         Path currPath = null;
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -88,7 +65,7 @@ public class MainActivity extends QtActivity {
                         }
                         assert currPath != null;
                         Log.d("The name of the file is ",currPath.toString());
-                        //fileList.add(currPath.toString());
+                        fileList.add(currPath.toString());
                         FileOutputStream fileOutputStream = new FileOutputStream(new File(getCacheDir(), zipEntry.getName()));
                         byte[] buffer = new byte[1024];
                         int length;
@@ -100,6 +77,11 @@ public class MainActivity extends QtActivity {
                     }
 
                     Log.d("No exception was found in ", input.toString());
+                    Log.d("ArrayList size is: ", fileList.size()+"");
+
+                    fileListReceived(fileList, pointer);
+
+
                 } catch (FileNotFoundException e) {
                     Log.d("Exception found while opening input", e.toString());
                     throw new RuntimeException(e);

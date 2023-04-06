@@ -11,13 +11,36 @@ Window {
     Filepicker {id: filepicker}
 
     Rectangle {
-        anchors.top: parent.top
-        anchors.topMargin: 30
-        height: 50; width: 100
+        id: button
+        anchors {top: parent.top; topMargin: 30; horizontalCenter: parent.horizontalCenter}
+        height: 50; width: 120
         radius: 50
         color: "yellow"
         Text { text: "Open dialog"; anchors.centerIn: parent }
-        MouseArea {anchors.fill: parent; onClicked: {filepicker.openFile();}}
+        MouseArea {anchors.fill: parent; onClicked: {filepicker.openFileDialog(); heading.text = "The files present inside the zip file is: "}}
+    }
+
+    Text {id: heading; width: parent.width; anchors.top: button.bottom; anchors.topMargin: 40; font.pixelSize: 20}
+
+    Item {
+        id: listviewcontainer
+        anchors.top: heading.bottom
+        anchors.topMargin: 10
+        width: parent.width; height: parent.height - 70
+
+        ListView {
+            id: listview
+            model: filepicker.files
+            spacing: 10
+            anchors.fill: parent
+            clip: true
+
+            delegate: Rectangle {
+                color: "light blue"
+                width: parent.width; height: 80
+                Text {anchors.centerIn: parent; text: filepicker.files[index]}
+            }
+        }
     }
 
 }
