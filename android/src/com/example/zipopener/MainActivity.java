@@ -24,41 +24,68 @@ public class MainActivity extends QtActivity {
 
     public final int REQUEST_CODE = 1;
     public long pointer;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("On create is running? ", "yes");
     }
 
-    public class ParameterClass{
+    public class ParameterClass {
         Uri uri;
         ZipInputStream zippedInputStream;
         int totalFiles;
 
-        ParameterClass(Uri uri, ZipInputStream zippedInputStream, int totalFiles){
+        ParameterClass(Uri uri, ZipInputStream zippedInputStream, int totalFiles) {
             this.uri = uri;
             this.zippedInputStream = zippedInputStream;
             this.totalFiles = totalFiles;
         }
     }
-    //use lambdas to get callback -- closures
-    public class BackgroundThreadClass extends AsyncTask<ParameterClass,Void,Void>{
-        @Override
-        public Void doInBackground(ParameterClass... params) {
-            Log.d("Running statement ", "5");
-            Uri uri = params[0].uri;
-            ZipInputStream zippedInputStream = params[0].zippedInputStream;
-            Log.d("Running statement ", "6");
-            ZipEntry zipEntry = null;
-            int totalFiles = params[0].totalFiles;
 
+    //use lambdas to get callback -- closures
+    public class BackgroundThreadClass extends AsyncTask<InputStream, Void, Void> {
+        @Override
+        public Void doInBackground(InputStream... params) {
+            InputStream input = params[0];
+            Log.d("Running statement ", "1");
+            ZipInputStream zippedInputStream = new ZipInputStream(input);
+            Log.d("Running statement ", "2");
+            ZipEntry zipEntry;
+            int totalFiles = 0;
+
+            while (true) {
+                try {
+                    if ((zipEntry = zippedInputStream.getNextEntry()) == null) break;
+                } catch (IOException e) {
+                    Log.d("The IO exception is running?", "yes");
+                    throw new RuntimeException(e);
+                }
+                if (!zipEntry.isDirectory()) {
+                    totalFiles++;
+                }
+            }
+
+            Log.d("The total files found is: ", totalFiles + "");
+            input = params[0];
+            Log.d("Running statement ", "3");
+            zippedInputStream = new ZipInputStream(input);
+            Log.d("Running statement ", "4");
+//            Log.d("Running statement ", "5");
+//            Uri uri = params[0].uri;
+//            ZipInputStream zippedInputStream = params[0].zippedInputStream;
+//            Log.d("Running statement ", "6");
+//            ZipEntry zipEntry = null;
+//            int totalFiles = params[0].totalFiles;
+            zipEntry = null;
             ArrayList<String> fileList = new ArrayList<>();
             int fileNumber = 0;
             while (true) {
                 try {
                     if ((zipEntry = zippedInputStream.getNextEntry()) == null) break;
+                    else {Log.d("Infinite loop?", String.valueOf(zippedInputStream.getNextEntry() == null));};
                 } catch (IOException e) {
-                    Log.d("Run time exception found ", "in 1"+e.toString());
+                    Log.d("Run time exception found ", "in 1" + e.toString());
                     throw new RuntimeException(e);
                 }
                 fileNumber += 1;
@@ -66,8 +93,8 @@ public class MainActivity extends QtActivity {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                     currPath = Paths.get(zipEntry.getName());
                 }
-                float percentage = (float)fileNumber/totalFiles * 100;
-                Log.d("The percentage done is: ",  percentage+ "");
+                float percentage = (float) fileNumber / totalFiles * 100;
+                Log.d("The percentage done is: ", percentage + "");
                 assert currPath != null;
                 Log.d("The name of the file is ", currPath.toString());
                 fileList.add(currPath.toString());
@@ -75,7 +102,7 @@ public class MainActivity extends QtActivity {
                 try {
                     fileOutputStream = new FileOutputStream(new File(getCacheDir(), zipEntry.getName()));
                 } catch (FileNotFoundException e) {
-                    Log.d("Run time exception found ", "in 2"+e.toString());
+                    Log.d("Run time exception found ", "in 2" + e.toString());
                     throw new RuntimeException(e);
                 }
                 byte[] buffer = new byte[1024];
@@ -84,20 +111,20 @@ public class MainActivity extends QtActivity {
                     try {
                         if (!((length = zippedInputStream.read(buffer)) > 0)) break;
                     } catch (IOException e) {
-                        Log.d("Run time exception found ", "in 3"+e.toString());
+                        Log.d("Run time exception found ", "in 3" + e.toString());
                         throw new RuntimeException(e);
                     }
                     try {
                         fileOutputStream.write(buffer, 0, length);
                     } catch (IOException e) {
-                        Log.d("Run time exception found ", "in 4"+e.toString());
+                        Log.d("Run time exception found ", "in 4" + e.toString());
                         throw new RuntimeException(e);
                     }
                 }
                 try {
                     fileOutputStream.close();
                 } catch (IOException e) {
-                    Log.d("Run time exception found ", "in 5"+e.toString());
+                    Log.d("Run time exception found ", "in 5" + e.toString());
                     throw new RuntimeException(e);
                 }
             }
@@ -128,31 +155,34 @@ public class MainActivity extends QtActivity {
                 Log.d("The uri from java is", uri.getPath());
 
                 InputStream input = null;
+//                try {
+//                    input = getContentResolver().openInputStream(uri);
+//                    Log.d("Running statement ", "1");
+//                    ZipInputStream zippedInputStream = new ZipInputStream(input);
+//                    Log.d("Running statement ", "2");
+//                    ZipEntry zipEntry;
+//                    int totalFiles = 0;
+//
+//                    while ((zipEntry = zippedInputStream.getNextEntry()) != null) {
+//                        if (!zipEntry.isDirectory()) {
+//                            totalFiles++;
+//                        }
+//                    }
+//
+//                    Log.d("The total files found is: ",totalFiles+"");
+//                    input = getContentResolver().openInputStream(uri);
+//                    Log.d("Running statement ", "3");
+//                    zippedInputStream = new ZipInputStream(input);
+//                    Log.d("Running statement ", "4");
+
+//                    ArrayList<String> fileList = new ArrayList<>();
+//                    int fileNumber = 0;
+                //MainActivity.ParameterClass params = new ParameterClass(uri, zippedInputStream,  totalFiles);
+
                 try {
                     input = getContentResolver().openInputStream(uri);
-                    //FileInputStream chosenFile = new FileInputStream(getContentResolver().openFileDescriptor(uri, "r").getFileDescriptor());
-                    Log.d("Running statement ", "1");
-                    ZipInputStream zippedInputStream = new ZipInputStream(input);
-                    Log.d("Running statement ", "2");
-                    ZipEntry zipEntry;
-                    int totalFiles = 0;
-
-                    while ((zipEntry = zippedInputStream.getNextEntry()) != null) {
-                        if (!zipEntry.isDirectory()) {
-                            totalFiles++;
-                        }
-                    }
-
-                    Log.d("The total files found is: ",totalFiles+"");
-                    input = getContentResolver().openInputStream(uri);
-                    Log.d("Running statement ", "3");
-                    zippedInputStream = new ZipInputStream(input);
-                    Log.d("Running statement ", "4");
-                    ArrayList<String> fileList = new ArrayList<>();
-                    int fileNumber = 0;
-                    MainActivity.ParameterClass params = new ParameterClass(uri, zippedInputStream,  totalFiles);
                     BackgroundThreadClass bgThread = new BackgroundThreadClass();
-                    bgThread.execute(params);
+                    bgThread.execute(input);
 
 //                    while ((zipEntry = zippedInputStream.getNextEntry()) != null) {
 //                        fileNumber+=1;
@@ -180,12 +210,20 @@ public class MainActivity extends QtActivity {
 //                    fileListReceived(fileList, pointer);
 
 
+//                } catch (FileNotFoundException e) {
+//                    Log.d("Exception found while opening input", e.toString());
+//                    throw new RuntimeException(e);
+//                } catch (IOException e) {
+//                    Log.d("Exception, zippedinputstream is not recognized: ", e.toString());
+//                    throw new RuntimeException(e);
+//                }
+//            }
                 } catch (FileNotFoundException e) {
-                    Log.d("Exception found while opening input", e.toString());
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    Log.d("Exception, zippedinputstream is not recognized: ", e.toString());
-                    throw new RuntimeException(e);
+                    Log.d("Exception, file not found ", e.toString());
+                } catch(NullPointerException e){
+                    Log.d("Exception, null pointer ", e.toString());
+                } catch (Exception e) {
+                    Log.d("Exception ",e.toString());
                 }
             }
         }
