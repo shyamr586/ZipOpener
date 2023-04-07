@@ -20,11 +20,12 @@ Window {
         MouseArea {anchors.fill: parent; onClicked: {filepicker.openFileDialog(); heading.text = "The files present inside the zip file is: "}}
     }
 
+    Text {id: loader; width: parent.width; anchors.top: heading.bottom; anchors.topMargin: 40; font.pixelSize: 20;text: "Files loaded: "+filepicker.loaded}
     Text {id: heading; width: parent.width; anchors.top: button.bottom; anchors.topMargin: 40; font.pixelSize: 20}
 
     Item {
         id: listviewcontainer
-        anchors.top: heading.bottom
+        anchors.top: loader.bottom
         anchors.topMargin: 10
         width: parent.width; height: parent.height - 70
 
@@ -34,6 +35,7 @@ Window {
             spacing: 10
             anchors.fill: parent
             clip: true
+
 
             delegate: Rectangle {
                 color: "light blue"
