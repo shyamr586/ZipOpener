@@ -8,14 +8,14 @@ class FilePicker : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList files READ files WRITE setFiles NOTIFY filesChanged)
-    Q_PROPERTY(int loaded READ loaded WRITE setLoaded NOTIFY loadedChanged)
+    Q_PROPERTY(float loaded READ loaded WRITE setLoaded NOTIFY loadedChanged)
 
 public:
     explicit FilePicker(QObject *parent = nullptr);
     QStringList files() const;
-    int loaded() const;
+    float loaded() const;
     void setFiles(const QStringList &newFiles);
-    void setLoaded(const int &newLoaded);
+    void setLoaded(const float &newLoaded);
     Q_INVOKABLE void openFileDialog();
 
 signals:
@@ -24,7 +24,7 @@ signals:
 
 private:
     QStringList m_files;
-    int m_loaded;
+    float m_loaded;
 };
 
 #endif // FILEPICKER_H

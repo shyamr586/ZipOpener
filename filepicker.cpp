@@ -19,14 +19,19 @@ Java_com_example_zipopener_MainActivity_fileListReceived(JNIEnv* env, jclass, jo
            files.append(qstring);
            //qDebug() << "Percentage done is " << (i + 1)/size*100;
            reinterpret_cast<FilePicker*>(pointer)->setFiles(files);
-           reinterpret_cast<FilePicker*>(pointer)->setLoaded(i+1);
+           //reinterpret_cast<FilePicker*>(pointer)->setLoaded(i+1);
            qDebug() << "The name of file is " << qstring;
     }
 
     //i think i can put a loader here ^ too.
 
     qDebug() << "The list is" << files;
+}
 
+extern "C" JNIEXPORT void JNICALL
+Java_com_example_zipopener_MainActivity_progressUpdated(JNIEnv* env, jclass, jint percentage, jlong pointer) {
+    qDebug() << "The percentage on cpp is: " << percentage;
+    reinterpret_cast<FilePicker*>(pointer)->setLoaded(percentage);
 }
 
 FilePicker::FilePicker(QObject *parent)
@@ -46,7 +51,7 @@ QStringList FilePicker::files() const
     return m_files;
 }
 
-int FilePicker::loaded() const
+float FilePicker::loaded() const
 {
     return m_loaded;
 }
@@ -59,10 +64,11 @@ void FilePicker::setFiles(const QStringList &newFiles)
     emit filesChanged();
 }
 
-void FilePicker::setLoaded(const int &newLoaded)
+void FilePicker::setLoaded(const float &newLoaded)
 {
     if (m_loaded == newLoaded)
         return;
     m_loaded = newLoaded;
     emit loadedChanged();
+    qDebug() << "New loaded is: " << m_loaded;
 }
